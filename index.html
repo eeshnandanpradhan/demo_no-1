@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QuickBite — Sign in</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="auth-shell">
+  <div class="auth-card">
+
+    <div class="auth-hero">
+      <div>
+        <div class="brand"><span class="brand-mark">🍲</span> QuickBite</div>
+        <h1>Order the food<br>you're craving,<br>track it live.</h1>
+        <p class="tagline">Browse the menu, build your cart, and follow your order from the kitchen to your door.</p>
+      </div>
+      <div class="hero-menu-strip">
+        <span>🍛</span><span>🍗</span><span>🌯</span><span>🍮</span><span>🥤</span>
+      </div>
+    </div>
+
+    <div class="auth-form-side">
+      <div class="auth-tabs">
+        <button type="button" id="tab-login" class="is-active">Log in</button>
+        <button type="button" id="tab-signup">Sign up</button>
+      </div>
+
+      <p class="auth-message" id="auth-message"></p>
+
+      <!-- LOGIN -->
+      <form id="login-form">
+        <div class="field">
+          <label for="login-email">Email</label>
+          <input type="email" id="login-email" required placeholder="you@example.com">
+        </div>
+        <div class="field">
+          <label for="login-password">Password</label>
+          <input type="password" id="login-password" required placeholder="••••••••">
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Log in</button>
+      </form>
+
+      <!-- SIGNUP -->
+      <form id="signup-form" class="is-hidden">
+        <div class="field">
+          <label for="signup-name">Full name</label>
+          <input type="text" id="signup-name" required placeholder="Priya Sharma">
+        </div>
+        <div class="field">
+          <label for="signup-email">Email</label>
+          <input type="email" id="signup-email" required placeholder="you@example.com">
+        </div>
+        <div class="field">
+          <label for="signup-phone">Phone</label>
+          <input type="tel" id="signup-phone" placeholder="98765 43210">
+        </div>
+        <div class="field">
+          <label for="signup-password">Password</label>
+          <input type="password" id="signup-password" required placeholder="Create a password">
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Create account</button>
+      </form>
+
+      <div class="auth-hint">
+        <strong>Admin demo login</strong> — email: admin@quickbite.com · password: admin123<br>
+        New here? Use Sign up to create a customer account.
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script src="data.js"></script>
+<script src="auth.js"></script>
+</body>
+</html>

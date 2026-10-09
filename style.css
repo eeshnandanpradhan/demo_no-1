@@ -1,0 +1,621 @@
+/* ==========================================================================
+   style.css — QuickBite
+   Palette: turmeric gold + curry-leaf green + chili maroon on warm ivory.
+   Layout: Flexbox for bars/rows, CSS Grid for card collections and tables.
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  --bg: #FFFDF9;
+  --surface: #FFF6E6;
+  --surface-alt: #FCEFD3;
+  --primary: #D89B2B;
+  --primary-dark: #A97A1C;
+  --secondary: #1D6C5D;
+  --secondary-dark: #144C41;
+  --accent: #A3321F;
+  --text: #241C15;
+  --text-muted: #7A6A57;
+  --border: #E9D8B8;
+  --white: #FFFFFF;
+  --radius-sm: 6px;
+  --radius: 12px;
+  --radius-lg: 20px;
+  --shadow: 0 8px 24px rgba(64, 44, 12, 0.10);
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  line-height: 1.5;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  margin: 0;
+  color: var(--text);
+}
+
+p { margin: 0; }
+
+button {
+  font-family: var(--font-body);
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+input, select, textarea {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+}
+
+a { color: inherit; }
+
+.is-hidden { display: none !important; }
+
+/* ---------- buttons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px 20px;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  font-size: 0.92rem;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+.btn:active { transform: scale(0.97); }
+.btn-primary { background: var(--primary); color: var(--white); }
+.btn-primary:hover { background: var(--primary-dark); }
+.btn-secondary { background: var(--secondary); color: var(--white); }
+.btn-secondary:hover { background: var(--secondary-dark); }
+.btn-outline { background: transparent; color: var(--text); border: 1.5px solid var(--border); }
+.btn-outline:hover { border-color: var(--primary); color: var(--primary-dark); }
+.btn-danger { background: var(--accent); color: var(--white); }
+.btn-danger:hover { opacity: 0.88; }
+.btn-sm { padding: 6px 12px; font-size: 0.82rem; }
+.btn-block { width: 100%; }
+
+/* ==========================================================================
+   AUTH PAGE (index.html)
+   ========================================================================== */
+.auth-shell {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background:
+    radial-gradient(circle at 12% 15%, rgba(216,155,43,0.16), transparent 45%),
+    radial-gradient(circle at 88% 85%, rgba(29,108,93,0.14), transparent 45%),
+    var(--bg);
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 960px;
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.auth-hero {
+  background: linear-gradient(160deg, var(--secondary) 0%, var(--secondary-dark) 100%);
+  color: var(--white);
+  padding: 48px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.auth-hero .brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+.auth-hero .brand-mark { font-size: 1.7rem; }
+
+.auth-hero h1 {
+  color: var(--white);
+  font-size: 2.1rem;
+  line-height: 1.15;
+  margin-top: 32px;
+  font-weight: 600;
+}
+
+.auth-hero p.tagline {
+  margin-top: 14px;
+  color: rgba(255,255,255,0.82);
+  font-size: 0.98rem;
+  max-width: 30ch;
+}
+
+.hero-menu-strip {
+  display: flex;
+  gap: 14px;
+  margin-top: 40px;
+  font-size: 1.6rem;
+}
+
+.auth-form-side {
+  padding: 44px 40px;
+  display: flex;
+  flex-direction: column;
+}
+
+.auth-tabs {
+  display: flex;
+  gap: 4px;
+  background: var(--surface);
+  border-radius: 999px;
+  padding: 4px;
+  margin-bottom: 28px;
+}
+
+.auth-tabs button {
+  flex: 1;
+  padding: 10px 0;
+  border-radius: 999px;
+  font-weight: 600;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.auth-tabs button.is-active {
+  background: var(--primary);
+  color: var(--white);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.field label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.field input {
+  padding: 11px 13px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--bg);
+  outline: none;
+}
+
+.field input:focus { border-color: var(--primary); }
+
+.auth-message {
+  min-height: 20px;
+  font-size: 0.86rem;
+  margin-bottom: 8px;
+}
+.auth-message.is-error { color: var(--accent); }
+.auth-message.is-success { color: var(--secondary); }
+
+.auth-hint {
+  margin-top: 20px;
+  padding: 12px 14px;
+  background: var(--surface);
+  border-radius: var(--radius-sm);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+.auth-hint strong { color: var(--text); }
+
+/* ==========================================================================
+   APP SHELL (user.html + admin.html share this header/nav pattern)
+   ========================================================================== */
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 32px;
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.app-nav {
+  display: flex;
+  gap: 6px;
+  background: var(--surface);
+  padding: 4px;
+  border-radius: 999px;
+}
+
+.app-nav button {
+  padding: 9px 18px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.app-nav button.is-active {
+  background: var(--secondary);
+  color: var(--white);
+}
+
+.badge-count {
+  background: var(--accent);
+  color: var(--white);
+  border-radius: 999px;
+  font-size: 0.7rem;
+  padding: 1px 7px;
+  font-weight: 700;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.header-user {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+}
+.header-user strong { color: var(--text); }
+
+.app-main {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 32px 24px 64px;
+}
+
+.section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.section-heading h2 { font-size: 1.5rem; }
+.section-heading .muted { color: var(--text-muted); font-size: 0.9rem; }
+
+/* ---------- category chips ---------- */
+.category-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+
+.chip {
+  padding: 8px 16px;
+  border-radius: 999px;
+  border: 1.5px solid var(--border);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  background: var(--white);
+}
+
+.chip.is-active {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: var(--white);
+}
+
+/* ---------- menu grid ---------- */
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 18px;
+}
+
+.food-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.food-card .food-emoji {
+  font-size: 2.2rem;
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--surface);
+  border-radius: var(--radius-sm);
+}
+
+.food-card h3 { font-size: 1.05rem; }
+.food-card .food-desc { color: var(--text-muted); font-size: 0.85rem; flex-grow: 1; }
+.food-card .food-cat { font-size: 0.72rem; color: var(--secondary); font-weight: 700; }
+
+.food-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 4px;
+}
+
+.food-price { font-weight: 700; font-size: 1.05rem; }
+
+.unavailable-tag {
+  font-size: 0.75rem;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* ---------- qty stepper ---------- */
+.stepper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--surface);
+  border-radius: 999px;
+  padding: 4px 6px;
+}
+
+.stepper button {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--white);
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border);
+}
+
+.stepper span { min-width: 16px; text-align: center; font-weight: 600; }
+
+/* ---------- cart ---------- */
+.cart-layout {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+.cart-list { display: flex; flex-direction: column; gap: 12px; }
+
+.cart-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 12px 16px;
+}
+
+.cart-row .food-emoji { font-size: 1.6rem; }
+.cart-row .cart-row-info { flex-grow: 1; }
+.cart-row .cart-row-info h4 { margin: 0 0 2px; font-size: 0.95rem; }
+.cart-row .cart-row-info span { font-size: 0.8rem; color: var(--text-muted); }
+.cart-row .remove-link { font-size: 0.78rem; color: var(--accent); font-weight: 600; }
+
+.summary-card {
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  position: sticky;
+  top: 96px;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+.summary-row.total {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text);
+  border-top: 1px dashed var(--border);
+  padding-top: 12px;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--text-muted);
+}
+.empty-state .empty-emoji { font-size: 2.6rem; margin-bottom: 12px; }
+
+/* ---------- orders ---------- */
+.order-list { display: flex; flex-direction: column; gap: 14px; }
+
+.order-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+}
+
+.order-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.order-id { font-weight: 700; }
+.order-date { font-size: 0.8rem; color: var(--text-muted); }
+.order-items { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 8px; }
+.order-total { font-weight: 700; }
+
+.status-pill {
+  padding: 5px 13px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.status-Placed { background: #EFE7DA; color: #6B5D4F; }
+.status-Preparing { background: #FBEBC7; color: #8A5F0B; }
+.status-Out-for-Delivery { background: #DCEEE9; color: #14524A; }
+.status-Delivered { background: #DDEFDD; color: #256B25; }
+.status-Cancelled { background: #F6DEDA; color: #8A2A1A; }
+
+/* ==========================================================================
+   ADMIN
+   ========================================================================== */
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.stat-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+}
+.stat-card .stat-label { font-size: 0.8rem; color: var(--text-muted); font-weight: 600; }
+.stat-card .stat-value { font-family: var(--font-display); font-size: 1.9rem; margin-top: 6px; }
+
+.admin-layout {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+.panel {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+}
+.panel h3 { font-size: 1.05rem; margin-bottom: 16px; }
+
+.form-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.form-grid .two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.form-grid label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  display: block;
+  margin-bottom: 4px;
+}
+
+.form-grid input, .form-grid select, .form-grid textarea {
+  width: 100%;
+  padding: 9px 11px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--bg);
+  outline: none;
+}
+.form-grid input:focus, .form-grid select:focus, .form-grid textarea:focus { border-color: var(--primary); }
+
+.checkbox-row { display: flex; align-items: center; gap: 8px; }
+.checkbox-row input { width: auto; }
+
+.form-actions { display: flex; gap: 10px; margin-top: 4px; }
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+}
+.data-table th {
+  text-align: left;
+  padding: 10px 12px;
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  font-weight: 700;
+  border-bottom: 2px solid var(--border);
+}
+.data-table td {
+  padding: 12px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: middle;
+}
+.data-table tr:last-child td { border-bottom: none; }
+
+.table-scroll { overflow-x: auto; }
+
+.row-actions { display: flex; gap: 8px; }
+
+.status-select {
+  padding: 6px 10px;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid var(--border);
+  background: var(--bg);
+  font-weight: 600;
+  font-size: 0.82rem;
+}
+
+/* ---------- responsive ---------- */
+@media (max-width: 860px) {
+  .auth-card { grid-template-columns: 1fr; }
+  .auth-hero { order: 2; }
+  .cart-layout { grid-template-columns: 1fr; }
+  .admin-layout { grid-template-columns: 1fr; }
+  .app-header { padding: 14px 16px; }
+  .app-main { padding: 24px 16px 48px; }
+  .form-grid .two-col { grid-template-columns: 1fr; }
+}

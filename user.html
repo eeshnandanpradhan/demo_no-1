@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QuickBite — Order food</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="app-header">
+  <div class="brand"><span>🍲</span> QuickBite</div>
+
+  <nav class="app-nav">
+    <button type="button" class="nav-btn is-active" data-section="menu">Menu</button>
+    <button type="button" class="nav-btn" data-section="cart">Cart <span class="badge-count is-hidden" id="cart-badge">0</span></button>
+    <button type="button" class="nav-btn" data-section="orders">My Orders</button>
+  </nav>
+
+  <div class="header-right">
+    <span class="header-user">Hi, <strong id="user-name-label">there</strong></span>
+    <button type="button" class="btn btn-outline btn-sm" id="logout-btn">Log out</button>
+  </div>
+</header>
+
+<main class="app-main">
+
+  <!-- ===================== MENU SECTION ===================== -->
+  <section id="section-menu">
+    <div class="section-heading">
+      <h2>What are you craving today?</h2>
+      <span class="muted">Prices in ₹, all items freshly prepared to order</span>
+    </div>
+    <div class="category-row" id="category-row"></div>
+    <div class="menu-grid" id="menu-grid"></div>
+  </section>
+
+  <!-- ===================== CART SECTION ===================== -->
+  <section id="section-cart" class="is-hidden">
+    <div class="section-heading">
+      <h2>Your cart</h2>
+      <span class="muted">Review your order before checkout</span>
+    </div>
+    <div id="cart-content"></div>
+  </section>
+
+  <!-- ===================== ORDERS SECTION ===================== -->
+  <section id="section-orders" class="is-hidden">
+    <div class="section-heading">
+      <h2>My orders</h2>
+      <span class="muted">Track the status of everything you've ordered</span>
+    </div>
+    <div id="orders-content"></div>
+  </section>
+
+</main>
+
+<script src="data.js"></script>
+<script src="user.js"></script>
+</body>
+</html>

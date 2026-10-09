@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QuickBite — Admin Console</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="app-header">
+  <div class="brand"><span>🍲</span> QuickBite <span style="color:var(--text-muted); font-weight:500; font-size:0.85rem;">Admin</span></div>
+
+  <nav class="app-nav">
+    <button type="button" class="nav-btn is-active" data-section="dashboard">Dashboard</button>
+    <button type="button" class="nav-btn" data-section="menu">Menu</button>
+    <button type="button" class="nav-btn" data-section="orders">Orders</button>
+    <button type="button" class="nav-btn" data-section="customers">Customers</button>
+  </nav>
+
+  <div class="header-right">
+    <span class="header-user">Signed in as <strong id="admin-name-label">Admin</strong></span>
+    <button type="button" class="btn btn-outline btn-sm" id="logout-btn">Log out</button>
+  </div>
+</header>
+
+<main class="app-main">
+
+  <!-- ===================== DASHBOARD ===================== -->
+  <section id="section-dashboard">
+    <div class="section-heading">
+      <h2>Dashboard</h2>
+      <span class="muted">A snapshot of how the kitchen is doing</span>
+    </div>
+    <div class="stat-grid" id="stat-grid"></div>
+
+    <div class="panel">
+      <h3>Most recent orders</h3>
+      <div class="table-scroll">
+        <table class="data-table" id="recent-orders-table">
+          <thead><tr><th>Order</th><th>Customer</th><th>Items</th><th>Total</th><th>Status</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== MENU MANAGEMENT ===================== -->
+  <section id="section-menu" class="is-hidden">
+    <div class="section-heading">
+      <h2>Menu management</h2>
+      <span class="muted">Add, edit, or retire dishes</span>
+    </div>
+
+    <div class="admin-layout">
+      <div class="panel">
+        <h3 id="menu-form-title">Add a new item</h3>
+        <form id="menu-form" class="form-grid">
+          <input type="hidden" id="menu-item-id">
+          <div>
+            <label for="menu-name">Dish name</label>
+            <input type="text" id="menu-name" required placeholder="e.g. Hyderabadi Biryani">
+          </div>
+          <div class="two-col">
+            <div>
+              <label for="menu-category">Category</label>
+              <select id="menu-category">
+                <option>Starters</option>
+                <option>Main Course</option>
+                <option>Desserts</option>
+                <option>Beverages</option>
+              </select>
+            </div>
+            <div>
+              <label for="menu-price">Price (₹)</label>
+              <input type="number" id="menu-price" min="0" step="1" required placeholder="199">
+            </div>
+          </div>
+          <div>
+            <label for="menu-emoji">Emoji icon</label>
+            <input type="text" id="menu-emoji" maxlength="4" placeholder="🍛">
+          </div>
+          <div>
+            <label for="menu-desc">Short description</label>
+            <textarea id="menu-desc" rows="2" placeholder="One line about the dish"></textarea>
+          </div>
+          <div class="checkbox-row">
+            <input type="checkbox" id="menu-available" checked>
+            <label for="menu-available" style="margin:0;">Available today</label>
+          </div>
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary" id="menu-submit-btn">Add item</button>
+            <button type="button" class="btn btn-outline is-hidden" id="menu-cancel-btn">Cancel</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="panel">
+        <h3>Current menu</h3>
+        <div class="table-scroll">
+          <table class="data-table" id="menu-table">
+            <thead><tr><th>Dish</th><th>Category</th><th>Price</th><th>Status</th><th></th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== ORDER MANAGEMENT ===================== -->
+  <section id="section-orders" class="is-hidden">
+    <div class="section-heading">
+      <h2>Orders</h2>
+      <span class="muted">Update status as each order moves through the kitchen</span>
+    </div>
+    <div class="panel">
+      <div class="table-scroll">
+        <table class="data-table" id="orders-table">
+          <thead><tr><th>Order</th><th>Customer</th><th>Items</th><th>Address</th><th>Total</th><th>Placed</th><th>Status</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CUSTOMERS ===================== -->
+  <section id="section-customers" class="is-hidden">
+    <div class="section-heading">
+      <h2>Customers</h2>
+      <span class="muted">Everyone who has signed up to order</span>
+    </div>
+    <div class="panel">
+      <div class="table-scroll">
+        <table class="data-table" id="customers-table">
+          <thead><tr><th>Name</th><th>Email</th><th>Phone</th><th>Joined</th><th>Orders placed</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script src="data.js"></script>
+<script src="admin.js"></script>
+</body>
+</html>
